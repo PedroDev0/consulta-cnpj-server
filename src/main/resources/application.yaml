@@ -1,0 +1,26 @@
+
+server.servlet.context-path: '/consulta-cnpj-srv'
+spring:
+  mvc.servlet.path: '/api'
+  jackson:
+    date-format: dd/MM/yyyy HH:mm:ss
+    time-zone: America/Sao_Paulo
+
+  datasource:
+    url: jdbc:h2:mem:mydb
+    username: test
+    password: 1234
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+  h2:
+    console:
+      enabled: true
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  api-docs:
+    path: /v3/api-docs
