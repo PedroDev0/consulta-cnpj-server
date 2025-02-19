@@ -6,28 +6,30 @@ import jakarta.persistence.*;
 @Table(name = "ADM")
 public class Adm {
 
-    private String key;
-    private String value;
+    private String keyId;
+    private String valueData;
 
     public Adm() {
-
     }
 
     @Id
-    @Column(name = "ID")
-    public String getKey() {
-        return key;
+    @Column(name = "KEY_ID")
+    public String getKeyId() {
+        return keyId;
     }
 
-    public String getValue() {
-        return value;
+    @Column(name = "VALUE_DATA", nullable = false)
+    public String getValueData() {
+        return valueData;
     }
 
-    public void setKey(String key) {
-        this.key = key;
+    public void setKeyId(String key) {
+        this.keyId = keyId;
     }
 
-    public void setValue(String value) {
-        this.value = value;
+    public void setValueData(String valueData) {
+        this.valueData = valueData;
     }
+
+
 }
