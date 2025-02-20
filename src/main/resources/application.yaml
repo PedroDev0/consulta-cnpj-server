@@ -24,3 +24,7 @@ springdoc:
     path: /swagger-ui.html
   api-docs:
     path: /v3/api-docs
+logging:
+  level:
+    root: INFO
+    com.pedro.dev: DEBUG
