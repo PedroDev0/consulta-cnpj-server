@@ -1,5 +1,5 @@
 
-server.servlet.context-path: '/consulta-cnpj-srv'
+server.servlet.context-path: '/consulta-cnpj-server'
 spring:
   mvc.servlet.path: '/api'
   jackson:
