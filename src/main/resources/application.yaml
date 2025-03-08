@@ -28,3 +28,6 @@ logging:
   level:
     root: INFO
     com.pedro.dev: DEBUG
+api:
+  url: ${URL_CNPJA:https://api.cnpja.com/}
+  key: ${API_KEY_CNPJA}

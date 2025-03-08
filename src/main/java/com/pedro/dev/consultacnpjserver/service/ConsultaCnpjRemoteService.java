@@ -1,11 +1,10 @@
 package com.pedro.dev.consultacnpjserver.service;
 
-import com.pedro.dev.consultacnpjserver.config.ConfigService;
-import com.pedro.dev.consultacnpjserver.constant.AdmKeys;
-import com.pedro.dev.consultacnpjserver.dto.CompanyInfo;
+import com.pedro.dev.consultacnpjserver.dto.request.CompanyInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -18,16 +17,19 @@ import org.springframework.web.client.RestTemplate;
 public class ConsultaCnpjRemoteService {
 
     @Autowired
-    RestTemplate restTemplate;
+    private RestTemplate restTemplate;
 
-    @Autowired
-    ConfigService configService;
+    @Value("${api.key}")
+    private String apiKey;
+
+    @Value("${api.url}")
+    private String url;
 
     private static final Logger logger = LoggerFactory.getLogger(ConsultaCnpjRemoteService.class);
 
     public CompanyInfo getCompanyInfoApi(String cnpj) {
-        String url = configService.getConfig(AdmKeys.API_URL)+"office/"+ cnpj;
 
+        url = url + "office/" + cnpj;
         logger.info("url " + url);
 
         ResponseEntity<CompanyInfo> response = restTemplate.exchange(
@@ -42,7 +44,7 @@ public class ConsultaCnpjRemoteService {
     private HttpEntity<Void> getHeaders() {
 
         HttpHeaders headers = new HttpHeaders();
-        headers.set("Authorization", "");
+        headers.set("Authorization", apiKey);
         return new HttpEntity<>(headers);
     }
 

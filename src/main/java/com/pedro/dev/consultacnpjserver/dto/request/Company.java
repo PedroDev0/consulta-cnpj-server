@@ -1,4 +1,4 @@
-package com.pedro.dev.consultacnpjserver.dto;
+package com.pedro.dev.consultacnpjserver.dto.request;
 
 import java.util.List;
 

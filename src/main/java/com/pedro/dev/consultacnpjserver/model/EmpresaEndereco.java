@@ -3,11 +3,17 @@ package com.pedro.dev.consultacnpjserver.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "empresa_endereco")
+@Table(name = "EMPRESA_ENDERECO")
 public class EmpresaEndereco {
 
-    @EmbeddedId
-    private EmpresaEnderecoId id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+
+    @OneToOne
+    @JoinColumn(name = "empresa_id", referencedColumnName = "id", nullable = false)
+    private Empresa empresa;
 
     @Column(name = "cidade", nullable = false, length = 100)
     private String cidade;
@@ -27,17 +33,20 @@ public class EmpresaEndereco {
     @Column(name = "numero", nullable = false, length = 10)
     private String numero;
 
-    @ManyToOne
-    @MapsId("empresaId")
-    @JoinColumn(name = "empresa_id", referencedColumnName = "id")
-    private Empresa empresa;
-
-    public EmpresaEnderecoId getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(EmpresaEnderecoId id) {
+    public void setId(Long id) {
         this.id = id;
+    }
+
+    public Empresa getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
     }
 
     public String getCidade() {
@@ -86,13 +95,5 @@ public class EmpresaEndereco {
 
     public void setNumero(String numero) {
         this.numero = numero;
-    }
-
-    public Empresa getEmpresa() {
-        return empresa;
-    }
-
-    public void setEmpresa(Empresa empresa) {
-        this.empresa = empresa;
     }
 }

@@ -7,5 +7,5 @@ import java.util.Optional;
 
 public interface EmpresaRepository extends JpaRepository<Empresa,Long> {
 
-    Empresa findByCnpj(String cnpj);
+    Optional< Empresa> findByCnpj(String cnpj);
 }

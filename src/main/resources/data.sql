@@ -1,2 +1,0 @@
-INSERT INTO ADM(KEY_ID, VALUE_DATA) VALUES ('API_URL', 'https://api.cnpja.com/');
-INSERT INTO ADM(KEY_ID, VALUE_DATA) VALUES ('API_KEY', 'sua_key');

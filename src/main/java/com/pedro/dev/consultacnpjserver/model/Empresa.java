@@ -1,7 +1,6 @@
 package com.pedro.dev.consultacnpjserver.model;
 
 import jakarta.persistence.*;
-
 import java.util.Set;
 
 @Entity
@@ -11,7 +10,7 @@ public class Empresa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private long id;
+    private Long id;
 
     @Column(name = "cnpj", unique = true, nullable = false, length = 18)
     private String cnpj;
@@ -22,14 +21,14 @@ public class Empresa {
     @OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Pessoa> membros;
 
-    @OneToOne(mappedBy = "empresa", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private EmpresaEndereco empresaEndereco;
+    @OneToOne(mappedBy = "empresa", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
+    private EmpresaEndereco endereco;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {  // Correção aqui
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -57,11 +56,14 @@ public class Empresa {
         this.membros = membros;
     }
 
-    public EmpresaEndereco getEmpresaEndereco() {
-        return empresaEndereco;
+    public EmpresaEndereco getEndereco() {
+        return endereco;
     }
 
-    public void setEmpresaEndereco(EmpresaEndereco empresaEndereco) {
-        this.empresaEndereco = empresaEndereco;
+    public void setEndereco(EmpresaEndereco endereco) {
+        this.endereco = endereco;
+        if (endereco != null) {
+            endereco.setEmpresa(this);
+        }
     }
 }

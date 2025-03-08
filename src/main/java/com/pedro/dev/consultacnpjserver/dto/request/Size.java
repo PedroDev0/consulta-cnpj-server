@@ -1,4 +1,4 @@
-package com.pedro.dev.consultacnpjserver.dto;
+package com.pedro.dev.consultacnpjserver.dto.request;
 
 public record Size(
         long id,

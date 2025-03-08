@@ -3,7 +3,7 @@ package com.pedro.dev.consultacnpjserver.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "pessoa")
+@Table(name = "PESSOA")
 public class Pessoa {
 
     @Id
@@ -22,7 +22,7 @@ public class Pessoa {
 
     @ManyToOne
     @JoinColumn(name = "empresa_id", referencedColumnName = "id")
-    private Empresa empresa;
+    private  Empresa empresa;
 
     public long getId() {
         return id;

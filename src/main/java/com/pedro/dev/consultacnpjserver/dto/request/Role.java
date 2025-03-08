@@ -1,4 +1,4 @@
-package com.pedro.dev.consultacnpjserver.dto;
+package com.pedro.dev.consultacnpjserver.dto.request;
 
 public record Role(
         long id,
